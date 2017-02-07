@@ -18,6 +18,8 @@ Your browser should have automatically launched [http://localhost:4000](http://l
 
 Any changes you make to your code will also automatically be reflected in the browser.
 
+You can also view the example app here: [https://tzellman.github.io/hyperapp-boilerplate/](https://tzellman.github.io/hyperapp-boilerplate/).
+
 ## Building a release
 
 ```bash
