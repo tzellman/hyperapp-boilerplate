@@ -1,4 +1,4 @@
-import {html} from 'hyperapp';
+import {html} from 'hyperapp/hx';
 
 const view = (model, msg) => (html`
   <div class="counter">
