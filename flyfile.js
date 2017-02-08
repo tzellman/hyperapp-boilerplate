@@ -17,50 +17,50 @@ const src = {
     vendor: []
 };
 
-export async function clean() {
-    await this.clear([target, releaseTarget]);
+export async function clean(fly) {
+    await fly.clear([target, releaseTarget]);
 }
 
-export async function copies(o) {
-    await this.source(o.src || src.staticAssets).target(target);
+export async function copyStaticAssets(fly, o) {
+    await fly.source(o.src || src.staticAssets).target(target);
 }
 
-export async function vendors() {
-    await this.source(src.vendor).concat('vendor.js').target(`${target}`);
+export async function vendors(fly) {
+    await fly.source(src.vendor).concat('vendor.js').target(`${target}`);
 }
 
 let conf;
-export async function scripts() {
+export async function scripts(fly) {
     conf = conf || rollupConfig(isWatching && 'development');
-    await this.source('src/scripts/app.js').rollup(conf).target(`${target}`);
+    await fly.source('src/scripts/app.js').rollup(conf).target(`${target}`);
 }
 
-export async function styles() {
-    await this.source(src.scss).sass({
+export async function styles(fly) {
+    await fly.source(src.scss).sass({
         outputStyle: 'compressed',
         includePaths: []
     }).autoprefixer().target(`${target}`);
 }
 
-export async function build() {
+export async function build(fly) {
     // TODO add linting
-    await this.serial(['clean', 'copies', 'styles', 'scripts', 'vendors']);
+    await fly.parallel(['clean', 'copyStaticAssets', 'styles', 'scripts', 'vendors']);
 }
 
-export async function release() {
-    await this.source(`${target}/*.js`).uglify(uglifyConfig).target(`${target}`);
-    await this.source(`${target}/**/*`).rev({
+export async function release(fly) {
+    await fly.source(`${target}/*.js`).uglify(uglifyConfig).target(`${target}`);
+    await fly.source(`${target}/**/*`).rev({
         ignores: ['.html', '.png', '.svg', '.ico', '.json', '.txt']
     }).revManifest({dest: releaseTarget, trim: target}).revReplace().target(releaseTarget);
-    await this.source(`${releaseTarget}/*.html`).htmlmin().target(releaseTarget);
+    await fly.source(`${releaseTarget}/*.html`).htmlmin().target(releaseTarget);
 }
 
-export async function watch() {
+export async function watch(fly) {
     isWatching = true;
-    await this.start('build');
-    await this.watch(src.js, ['scripts', 'reload']);
-    await this.watch(src.scss, ['styles', 'reload']);
-    await this.watch(src.staticAssets, ['copies', 'reload']);
+    await fly.start('build');
+    await fly.watch(src.js, ['scripts', 'reload']);
+    await fly.watch(src.scss, ['styles', 'reload']);
+    await fly.watch(src.staticAssets, ['copyStaticAssets', 'reload']);
     // start server
     browserSync({
         server: target,
@@ -72,6 +72,6 @@ export async function watch() {
     });
 }
 
-export async function reload() {
+export async function reload(fly) {
     isWatching && browserSync.reload();
 }
