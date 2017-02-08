@@ -1,4 +1,4 @@
-import {html} from 'hyperapp/hx';
+import {html} from 'hyperapp';
 
 const clickCount = clicks => {
     return clicks > 0 ? html`<div>You clicked ${clicks} time${clicks > 1 ? 's' : ''}</div>` : '';
