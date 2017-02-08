@@ -1,5 +1,10 @@
 import {html} from 'hyperapp/hx';
 
+const clickCount = clicks => {
+    return clicks > 0 ? html`<div>You clicked ${clicks} time${clicks > 1 ? 's' : ''}</div>` : '';
+};
+
+
 const view = (model, msg) => (html`
   <div class="counter">
     <h1>Welcome to HyperApp!</h1>
@@ -19,6 +24,7 @@ const view = (model, msg) => (html`
       >
         -
       </button>
+      ${clickCount(model.clicks)}
     </section>
   </div>
 `);
