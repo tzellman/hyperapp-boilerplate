@@ -8,7 +8,7 @@ module.exports = isDev => ({
         plugins: [
             commonjs({
                 namedExports: {
-                    'node_modules/hyperapp/index.js': ['app', 'html', 'h']
+                    'node_modules/hyperapp/src/index.js': ['app', 'html', 'h']
                 }
             }),
             babel({
