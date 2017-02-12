@@ -1,4 +1,6 @@
-import {html} from 'hyperapp';
+import {h} from 'hyperapp';
+import hyperx from 'hyperx';
+const html = hyperx(h);
 
 const clickCount = clicks => {
     return clicks > 0 ? html`<div>You clicked ${clicks} time${clicks > 1 ? 's' : ''}</div>` : '';
