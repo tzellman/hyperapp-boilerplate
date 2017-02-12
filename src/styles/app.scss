@@ -44,7 +44,13 @@ body {
             background-color: $color-sub;
             font-size: 20px;
             color: black;
+
+            &:disabled {
+                background-color: lighten($color-sub, 50%);
+                cursor: not-allowed;
+            }
         }
+
     }
 
     .line-break {
