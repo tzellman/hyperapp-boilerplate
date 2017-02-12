@@ -8,7 +8,7 @@ let isWatching = false;
 const target = 'dist';
 const releaseTarget = 'release';
 const src = {
-    js: 'src/scripts/**',
+    js: 'src/**/*.js',
     scss: 'src/styles/app.scss',
     staticAssets: [
         'src/static/**/*.*',
@@ -30,9 +30,9 @@ export async function vendors(fly) {
 }
 
 let conf;
-export async function scripts(fly) {
+export async function js(fly) {
     conf = conf || rollupConfig(isWatching && 'development');
-    await fly.source('src/scripts/app.js').rollup(conf).target(`${target}`);
+    await fly.source('src/app.js').rollup(conf).target(`${target}`);
 }
 
 export async function styles(fly) {
@@ -44,7 +44,7 @@ export async function styles(fly) {
 
 export async function build(fly) {
     // TODO add linting
-    await fly.parallel(['clean', 'copyStaticAssets', 'styles', 'scripts', 'vendors']);
+    await fly.serial(['clean', 'copyStaticAssets', 'styles', 'js', 'vendors']);
 }
 
 export async function release(fly) {
@@ -58,7 +58,7 @@ export async function release(fly) {
 export async function watch(fly) {
     isWatching = true;
     await fly.start('build');
-    await fly.watch(src.js, ['scripts', 'reload']);
+    await fly.watch(src.js, ['js', 'reload']);
     await fly.watch(src.scss, ['styles', 'reload']);
     await fly.watch(src.staticAssets, ['copyStaticAssets', 'reload']);
     // start server
