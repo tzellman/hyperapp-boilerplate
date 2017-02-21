@@ -20,8 +20,8 @@
   "homepage": "https://github.com/tzellman/hyperapp-boilerplate#readme",
   "devDependencies": {
     "babel-preset-es2015-rollup": "^3.0.0",
-    "browser-sync": "^2.18.7",
-    "fly": "^2.0.3",
+    "browser-sync": "^2.18.8",
+    "fly": "^2.0.4",
     "fly-autoprefixer": "^1.1.0",
     "fly-clear": "^1.0.1",
     "fly-concat": "^1.2.0",
@@ -30,17 +30,17 @@
     "fly-rev": "^2.2.0",
     "fly-rollup": "lukeed/fly-rollup",
     "fly-sass": "^2.1.0",
-    "fly-uglify": "^2.1.0",
+    "fly-uglify": "^2.1.1",
     "fly-watch": "^1.1.1",
     "rollup": "^0.41.4",
     "rollup-plugin-babel": "^2.7.1",
     "rollup-plugin-commonjs": "^7.0.0",
     "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-replace": "^1.1.1",
-    "serve": "^3.2.7"
+    "serve": "^3.4.0"
   },
   "dependencies": {
-    "hyperapp": "0.2.1",
+    "hyperapp": "0.5.0",
     "hyperx": "2.0.5"
   }
 }
