@@ -1,6 +1,4 @@
-const browserSync = require('browser-sync'),
-    rollupConfig = require('./config/rollup'),
-    uglifyConfig = require('./config/uglify');
+const browserSync = require('browser-sync');
 
 let isWatching = false;
 
@@ -29,10 +27,27 @@ export async function vendors(fly) {
     await fly.source(src.vendor).concat('vendor.js').target(`${target}`);
 }
 
-let conf;
 export async function js(fly) {
-    conf = conf || rollupConfig(isWatching && 'development');
-    await fly.source('src/app.js').rollup(conf).target(`${target}`);
+    await fly.source('src/app.js').rollup({
+        rollup: {
+            plugins: [
+                require('rollup-plugin-buble')({transforms: {dangerousTaggedTemplateString: true}}),
+                require('rollup-plugin-commonjs')(),
+                require('rollup-plugin-replace')({
+                    'process.env.NODE_ENV': JSON.stringify(isWatching ? 'development' : 'production')
+                }),
+                require('rollup-plugin-node-resolve')({
+                    browser: true,
+                    main: true
+                })
+            ]
+        },
+        bundle: {
+            format: 'iife',
+            sourceMap: isWatching,
+            moduleName: "window"
+        }
+    }).target(`${target}`);
 }
 
 export async function styles(fly) {
@@ -48,7 +63,16 @@ export async function build(fly) {
 }
 
 export async function release(fly) {
-    await fly.source(`${target}/*.js`).uglify(uglifyConfig).target(`${target}`);
+    await fly.source(`${target}/*.js`).uglify({
+        compress: {
+            conditionals: 1,
+            drop_console: 1,
+            comparisons: 1,
+            join_vars: 1,
+            booleans: 1,
+            loops: 1
+        }
+    }).target(target);
     await fly.source(`${target}/**/*`).rev({
         ignores: ['.html', '.png', '.svg', '.ico', '.json', '.txt']
     }).revManifest({dest: releaseTarget, trim: target}).revReplace().target(releaseTarget);
