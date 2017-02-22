@@ -40,7 +40,6 @@
     "serve": "^3.4.0"
   },
   "dependencies": {
-    "hyperapp": "0.5.0",
-    "hyperx": "^2.0.5"
+    "hyperapp": "0.5.0"
   }
 }
