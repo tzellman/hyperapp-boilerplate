@@ -1,3 +1,6 @@
+[![GitHub issues](https://img.shields.io/github/issues/tzellman/hyperapp-boilerplate.svg)](https://github.com/tzellman/hyperapp-boilerplate/issues)
+[![dependencies](https://david-dm.org/tzellman/hyperapp-boilerplate.svg)](https://david-dm.org/tzellman/hyperapp-boilerplate)
+
 # [HyperApp](https://github.com/hyperapp/hyperapp) Boilerplate
 
 The purpose of this example was to create a starting-point for a [HyperApp](https://github.com/hyperapp/hyperapp) project.
