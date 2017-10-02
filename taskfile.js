@@ -60,7 +60,7 @@ export async function styles(taskr) {
       outputStyle: 'compressed',
       includePaths: []
     })
-    .autoprefixer()
+    .postcss({ plugins: [require('autoprefixer')({ browsers: ['last 2 versions'] })] })
     .target(`${target}`)
 }
 

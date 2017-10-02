@@ -24,10 +24,12 @@
     "@taskr/concat": "^1.1.0",
     "@taskr/esnext": "^1.1.0",
     "@taskr/htmlmin": "^1.1.0",
+    "@taskr/postcss": "^1.1.2",
     "@taskr/rev": "^1.1.0",
     "@taskr/sass": "^1.1.0",
     "@taskr/uglify": "^1.1.0",
     "@taskr/watch": "^1.1.0",
+    "autoprefixer": "^7.1.4",
     "browser-sync": "^2.18.8",
     "fly-rollup": "^2.1.0",
     "rollup": "^0.50.0",
@@ -36,8 +38,7 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-replace": "^2.0.0",
     "serve": "^6.2.0",
-    "taskr": "^1.1.0",
-    "taskr-autoprefixer": "^1.0.0"
+    "taskr": "^1.1.0"
   },
   "dependencies": {
     "hyperapp": "0.12.1"
