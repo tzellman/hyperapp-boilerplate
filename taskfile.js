@@ -95,6 +95,10 @@ export async function release(taskr) {
     .source(`${releaseTarget}/*.html`)
     .htmlmin()
     .target(releaseTarget)
+  await taskr
+    .source(`${releaseTarget}/**/*.{js,css,html,png,jpg,gif}`)
+    .precache({ stripPrefix: `${releaseTarget}/` })
+    .target(releaseTarget)
 }
 
 export async function watch(taskr) {
