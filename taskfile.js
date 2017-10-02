@@ -12,23 +12,23 @@ const src = {
   vendor: []
 }
 
-export async function clean(fly) {
-  await fly.clear([target, releaseTarget])
+export async function clean(taskr) {
+  await taskr.clear([target, releaseTarget])
 }
 
-export async function copyStaticAssets(fly, o) {
-  await fly.source(o.src || src.staticAssets).target(target)
+export async function copyStaticAssets(taskr, o) {
+  await taskr.source(o.src || src.staticAssets).target(target)
 }
 
-export async function vendors(fly) {
-  await fly
+export async function vendors(taskr) {
+  await taskr
     .source(src.vendor)
     .concat('vendor.js')
     .target(`${target}`)
 }
 
-export async function js(fly) {
-  await fly
+export async function js(taskr) {
+  await taskr
     .source('src/app.js')
     .rollup({
       rollup: {
@@ -53,8 +53,8 @@ export async function js(fly) {
     .target(`${target}`)
 }
 
-export async function styles(fly) {
-  await fly
+export async function styles(taskr) {
+  await taskr
     .source(src.scss)
     .sass({
       outputStyle: 'compressed',
@@ -64,13 +64,13 @@ export async function styles(fly) {
     .target(`${target}`)
 }
 
-export async function build(fly) {
+export async function build(taskr) {
   // TODO add linting
-  await fly.serial(['clean', 'copyStaticAssets', 'styles', 'js', 'vendors'])
+  await taskr.serial(['clean', 'copyStaticAssets', 'styles', 'js', 'vendors'])
 }
 
-export async function release(fly) {
-  await fly
+export async function release(taskr) {
+  await taskr
     .source(`${target}/*.js`)
     .uglify({
       compress: {
@@ -83,7 +83,7 @@ export async function release(fly) {
       }
     })
     .target(target)
-  await fly
+  await taskr
     .source(`${target}/**/*`)
     .rev({
       ignores: ['.html', '.png', '.svg', '.ico', '.json', '.txt']
@@ -91,18 +91,18 @@ export async function release(fly) {
     .revManifest({ dest: releaseTarget, trim: target })
     .revReplace()
     .target(releaseTarget)
-  await fly
+  await taskr
     .source(`${releaseTarget}/*.html`)
     .htmlmin()
     .target(releaseTarget)
 }
 
-export async function watch(fly) {
+export async function watch(taskr) {
   isWatching = true
-  await fly.start('build')
-  await fly.watch(src.js, ['js', 'reload'])
-  await fly.watch(src.scss, ['styles', 'reload'])
-  await fly.watch(src.staticAssets, ['copyStaticAssets', 'reload'])
+  await taskr.start('build')
+  await taskr.watch(src.js, ['js', 'reload'])
+  await taskr.watch(src.scss, ['styles', 'reload'])
+  await taskr.watch(src.staticAssets, ['copyStaticAssets', 'reload'])
   // start server
   browserSync({
     server: target,
@@ -112,6 +112,6 @@ export async function watch(fly) {
   })
 }
 
-export async function reload(fly) {
+export async function reload(taskr) {
   isWatching && browserSync.reload()
 }

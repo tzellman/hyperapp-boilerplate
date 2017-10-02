@@ -16,15 +16,15 @@ const Button = ({ className, label, update, disabled }) => (
   </button>
 )
 
-const view = (model, actions) => (
+const view = (state, actions) => (
   <div class="counter">
     <h1>Welcome to HyperApp!</h1>
     <hr class="line-break" />
     <section>
       {Button({ className: 'add', label: '+', update: actions.add })}
-      <h1>{model.num}</h1>
-      {Button({ className: 'sub', label: '-', update: actions.sub, disabled: model.num <= 0 })}
-      {clickCount(model.clicks)}
+      <h1>{state.num}</h1>
+      {Button({ className: 'sub', label: '-', update: actions.sub, disabled: state.num <= 0 })}
+      {clickCount(state.clicks)}
     </section>
   </div>
 )
