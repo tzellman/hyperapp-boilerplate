@@ -1,6 +1,6 @@
 const model = {
-    num: 0,
-    clicks: 0
-};
+  num: 0,
+  clicks: 0
+}
 
-export default model;
+export default model
