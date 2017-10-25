@@ -5,10 +5,10 @@
 
 The purpose of this example was to create a starting-point for a [HyperApp](https://github.com/hyperapp/hyperapp) project.
 
-I decided to use [Fly](https://github.com/flyjs/fly) along with [Rollup](https://github.com/rollup/rollup), since the
+I decided to use [Taskr](https://github.com/lukeed/taskr) along with [Rollup](https://github.com/rollup/rollup), since the
 combination of the two seems to create a pleasant development/build experience.
 
-I suppose this example can also be used as a starting point for a Fly/Rollup app.
+I suppose this example can also be used as a starting point for a Taskr/Rollup app.
 
 ## Getting started
 
@@ -43,7 +43,7 @@ This will use [serve](https://github.com/zeit/serve) to statically serve your ap
 ## Credits
 
 The basis of the counter code was mostly copied from @selfup's [hyperapp-one]()https://github.com/selfup/hyperapp-one) example.
-I also thank @lukeed and @jbucaran for all of the `fly` examples, and the library itself.
+I also thank @lukeed and @jbucaran for all of the `taskr` examples, and the library itself.
 
 ## Author
 
