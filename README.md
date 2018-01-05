@@ -42,7 +42,7 @@ This will use [serve](https://github.com/zeit/serve) to statically serve your ap
 
 ## Credits
 
-The basis of the counter code was mostly copied from @selfup's [hyperapp-one]()https://github.com/selfup/hyperapp-one) example.
+The basis of the counter code was mostly copied from @selfup's [hyperapp-one](https://github.com/selfup/hyperapp-one) example.
 I also thank @lukeed and @jbucaran for all of the `taskr` examples, and the library itself.
 
 ## Author
