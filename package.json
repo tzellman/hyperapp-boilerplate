@@ -42,6 +42,6 @@
     "taskr": "^1.1.0"
   },
   "dependencies": {
-    "hyperapp": "0.12.1"
+    "hyperapp": "^1.0.1"
   }
 }

@@ -1,6 +1,6 @@
 const actions = {
-    add: ({num, clicks}) => ({num: num + 1, clicks: clicks + 1}),
-    sub: ({num, clicks}) => ({num: num - 1, clicks: clicks + 1})
+    add: () => state => ({num: state.num + 1, clicks: state.clicks + 1}),
+    sub: () => state => ({num: state.num - 1, clicks: state.clicks + 1})
 };
 
 export default actions;

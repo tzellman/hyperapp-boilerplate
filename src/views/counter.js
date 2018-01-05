@@ -1,4 +1,4 @@
-import { h } from 'hyperapp'
+import { h } from 'hyperapp';
 
 const clickCount = clicks => {
     return clicks > 0 ? <div>You clicked {clicks} time{clicks > 1 ? 's' : ''}</div> : '';
