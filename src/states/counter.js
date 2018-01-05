@@ -1,6 +1,6 @@
 const state = {
-  num: 0,
-  clicks: 0
-}
+    num: 0,
+    clicks: 0
+};
 
-export default state
+export default state;
