@@ -1,6 +1,6 @@
 {
   "name": "hyperapp-boilerplate",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "This is a sample/boilerplate project that shows how to create a production-ready hyperapp application.",
   "scripts": {
     "build": "taskr build release",
@@ -29,19 +29,19 @@
     "@taskr/sass": "^1.1.0",
     "@taskr/uglify": "^1.1.0",
     "@taskr/watch": "^1.1.0",
-    "autoprefixer": "^7.1.4",
-    "browser-sync": "^2.18.8",
+    "autoprefixer": "9.6.1",
+    "browser-sync": "2.26.7",
     "fly-precache": "^2.1.0",
     "fly-rollup": "^2.1.0",
     "rollup": "^0.50.0",
     "rollup-plugin-buble": "^0.16.0",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^3.0.0",
-    "rollup-plugin-replace": "^2.0.0",
-    "serve": "^6.2.0",
+    "rollup-plugin-replace": "2.2.0",
+    "serve": "11.0.2",
     "taskr": "^1.1.0"
   },
   "dependencies": {
-    "hyperapp": "^1.0.1"
+    "hyperapp": "1.2.10"
   }
 }
