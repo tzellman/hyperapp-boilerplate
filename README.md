@@ -31,7 +31,6 @@ npm run build
 
 This will generate a `release` directory with your minified/rev'd assets.
 
-
 ## Using `serve`
 
 ```bash
